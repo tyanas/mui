@@ -10,29 +10,30 @@ const cyan500 = cyan['500'];
 const grey500 = grey['500'];
 const styles = theme => ({
     root: {
-        margin: theme.spacing.unit
+        margin: theme.spacing.unit,
+        display: 'inline-block'
     },
     icon: {
         paddingRight: theme.spacing.unit
     },
+    // https://github.com/callemall/material-ui/blob/v1.0.24/src/Button/Button.js#L85
     flatPrimary: {
         color: cyan500,
         '&:hover': {
             backgroundColor: fade(grey500, 0.2),
             // Reset on mouse devices
             '@media (hover: none)': {
-                backgroundColor: 'transparent',
+                backgroundColor: 'transparent'
             }
         }
     },
-    // https://github.com/callemall/material-ui/blob/v1.0.24/src/Button/Button.js#L85
     raisedPrimary: {
         backgroundColor: cyan500,
         '&:hover': {
             backgroundColor: fade(cyan500, 0.4),
             // Reset on mouse devices
             '@media (hover: none)': {
-                backgroundColor: 'transparent',
+                backgroundColor: 'transparent'
             }
         }
     }
@@ -49,10 +50,9 @@ class ButtonV0 extends Component {
                 classes={{
                     root: this.props.classes.root,
                     flatPrimary: this.props.classes.flatPrimary,
-                    raisedPrimary: this.props.classes.raisedPrimary,
-                }}
-                >
-                <span  className={this.props.classes.icon}>{this.props.icon}</span>
+                    raisedPrimary: this.props.classes.raisedPrimary
+                }}>
+                {this.props.icon && <span className={this.props.classes.icon}>{this.props.icon}</span>}
                 {this.props.label}
             </Button>
         );
@@ -60,9 +60,12 @@ class ButtonV0 extends Component {
 }
 
 ButtonV0.propTypes = {
-    // raised: PropTypes.object.Boolean,
-    // icon: PropTypes.object.isRequired,
-    // label: PropTypes.object.String,
+    dense: PropTypes.bool,
+    disabled: PropTypes.bool,
+    raised: PropTypes.bool,
+    color: PropTypes.string,
+    icon: PropTypes.element,
+    label: PropTypes.string,
     classes: PropTypes.object.isRequired
 };
 
