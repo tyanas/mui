@@ -3,21 +3,41 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import cyan from 'material-ui/colors/cyan';
+import grey from 'material-ui/colors/grey';
+import common from 'material-ui/colors/common';
+import { fade } from 'material-ui/styles/colorManipulator';
 
 const cyan500 = cyan['500'];
+const grey500 = grey['500'];
+const white = common.white;
 const styles = theme => ({
-  root: {
-    margin: theme.spacing.unit
-  },
-  icon: {
-    paddingRight: theme.spacing.unit
-  },
-  flatPrimary: {
-    color: cyan500
-  },
-  raisedPrimary: {
-    backgroundColor: cyan500
-  }
+    root: {
+        margin: theme.spacing.unit
+    },
+    icon: {
+        paddingRight: theme.spacing.unit
+    },
+    flatPrimary: {
+        color: cyan500,
+        '&:hover': {
+            backgroundColor: fade(grey500, 0.2),
+            // Reset on mouse devices
+            '@media (hover: none)': {
+                backgroundColor: 'transparent',
+            }
+        }
+    },
+    // https://github.com/callemall/material-ui/blob/v1.0.24/src/Button/Button.js#L85
+    raisedPrimary: {
+        backgroundColor: cyan500,
+        '&:hover': {
+            backgroundColor: fade(cyan500, 0.4),
+            // Reset on mouse devices
+            '@media (hover: none)': {
+                backgroundColor: 'transparent',
+            }
+        }
+    }
 });
 
 class ButtonV0 extends Component {
