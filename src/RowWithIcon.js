@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import ButtonV0 from './ButtonV0.js';
 import IconButton from 'material-ui/IconButton';
+import Link from 'react-router-dom/Link';
 
 const styles = theme => ({
   button: {
@@ -32,16 +33,10 @@ class RowWithIcon extends Component {
                     {this.props.icon}
                     Primary
                 </Button>
-                <ButtonV0 raised color="primary" className={this.classes.button}
-                    icon={this.props.icon}
-                    label="Primary V0"
-                    >
-                </ButtonV0>
-                <ButtonV0 color="primary" className={this.classes.button}
-                    icon={this.props.icon}
-                    label="flat Primary V0"
-                    >
-                </ButtonV0>
+                <Button color="primary" className={this.classes.button}>
+                    {this.props.icon}
+                    flat Primary
+                </Button>
                 <Button raised dense className={this.classes.button}>
                     {this.props.icon}
                     Default dense
@@ -50,9 +45,11 @@ class RowWithIcon extends Component {
                     {this.props.icon}
                     Disabled
                 </Button>
+                <Link to="/">
                 <Button fab color="primary" aria-label={this.name} className={this.classes.button}>
                     {this.props.icon}
                 </Button>
+                </Link>
                 <Button fab color="default" aria-label={this.name} className={this.classes.button}>
                     {this.props.icon}
                 </Button>
